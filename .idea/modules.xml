@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Spark_Kafka_Elastic.iml" filepath="$PROJECT_DIR$/Spark_Kafka_Elastic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserActivityMonitor/UserActivityMonitor.iml" filepath="$PROJECT_DIR$/UserActivityMonitor/UserActivityMonitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ActivityStreamProcessor/activitystreamprocessor.iml" filepath="$PROJECT_DIR$/ActivityStreamProcessor/activitystreamprocessor.iml" />
+    </modules>
+  </component>
+</project>
