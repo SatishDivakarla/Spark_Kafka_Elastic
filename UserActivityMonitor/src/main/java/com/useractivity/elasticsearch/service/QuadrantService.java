@@ -15,12 +15,19 @@ import java.util.Calendar;
 import java.util.Iterator;
 
 /**
+ * This class
  * Created by SatishDivakarla on 4/25/15.
  */
 public class QuadrantService {
 
+    /**
+     * This method is called from rest webservice call to view active quadrant from last 5 seconds
+     * @return Active Qaudrant
+     */
     public static int getActiveQuadrant(){
+        // Current timestamp
         long currentTime = System.currentTimeMillis();
+        // Time stamp 5 seconds before
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(currentTime);
         calendar.add(Calendar.MINUTE, -5);
@@ -29,9 +36,16 @@ public class QuadrantService {
         return activeQuadrant;
     }
 
+    /**
+     *
+     * @param oldTime
+     * @param currentTime
+     * @return
+     */
     private static int getActiveQuadrantInWindow(long oldTime, long currentTime) {
         System.out.println("oldTime = " + oldTime);
         System.out.println("currentTime = " + currentTime);
+        // This utility class belongs to elasticsearchpractice modeule
         ElasticSearchUtil elasticSearchUtil = new ElasticSearchUtil();
         Client client = elasticSearchUtil.getClient();
 
@@ -42,20 +56,15 @@ public class QuadrantService {
                 .addAggregation(AggregationBuilders.terms("by_id").field("id").size(0)
                 )
                 .execute().actionGet();
-        //printAggregations(searchResponse.getAggregations(), "by_id");
-
-        /*SearchHits searchHits = searchResponse.getHits();
-
-        Iterator<SearchHit> searchHitIterator = searchHits.iterator();
-
-        while(searchHitIterator.hasNext()){
-            SearchHit hit = searchHitIterator.next();
-            System.out.println(hit.getSourceAsString());
-        }*/
-
         return getActiveBucketFromAggResults(searchResponse.getAggregations(), "by_id");
     }
 
+    /**
+     * This method is to print aggregation results.
+     * Not used currently but will be handy for debugging
+     * @param aggregations
+     * @param key
+     */
     private static void printAggregations(Aggregations aggregations, String key) {
         Terms terms = aggregations.get(key);
         Iterator<Terms.Bucket> iterator = terms.getBuckets().iterator();
@@ -83,6 +92,11 @@ public class QuadrantService {
         }
         return activeQuadrant;
     }
+
+    /**
+     * This is just a main method for testing.
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("Active Quadrant = " + getActiveQuadrant());
     }

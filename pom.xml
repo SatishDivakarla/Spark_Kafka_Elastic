@@ -11,6 +11,7 @@
     <modules>
         <module>UserActivityMonitor</module>
         <module>ActivityStreamProcessor</module>
+        <module>ElasticSearch</module>
     </modules>
 
 

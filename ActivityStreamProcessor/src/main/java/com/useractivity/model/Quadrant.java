@@ -3,13 +3,26 @@ package com.useractivity.model;
 import java.io.Serializable;
 
 /**
+ * Quadrant model class
  * Created by SatishDivakarla on 4/24/15.
  */
 public class Quadrant implements Serializable{
 
+    /**
+     * X-Coordinate
+     */
     private int coordinateX;
+    /**
+     * Y-Coordinate
+     */
     private int coordinateY;
+    /**
+     * Timestamp in which an activity occured
+     */
     private long timestamp;
+    /**
+     * Quadrant Id
+     */
     private int id;
 
     public int getCoordinateX() {

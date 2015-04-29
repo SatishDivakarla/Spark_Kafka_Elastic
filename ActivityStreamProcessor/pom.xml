@@ -30,8 +30,8 @@
     </dependency>
 
     <dependency>
-        <groupId>com.clairvoyantsoft</groupId>
-        <artifactId>elasticsearchpractice</artifactId>
+        <groupId>com.clairvoyant.poc</groupId>
+        <artifactId>elasticsearch</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
