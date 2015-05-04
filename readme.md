@@ -8,6 +8,7 @@ This project contains a simple user activity monitor on a single webpage. For ev
 * Apache Spark (Streaming)
 * Apache Kafka
 * Elastic search
+* Maven
 
 ## Installations and getting started
 ### Kafka
@@ -25,8 +26,17 @@ This project contains a simple user activity monitor on a single webpage. For ev
   > bin/kafka-topics.sh --list --zookeeper localhost:2181 <br />
   
 ### Elastic Search
+- Download the zip, TAR, RPM or DEB file from the following link https://www.elastic.co/downloads/elasticsearch
+- Run bin/elasticsearch on Unix or bin/elasticsearch.bat on Windows to start elastic search
+- ElasticSearchUtil class expects the cluster.name and node.name to "elastictest" and "SatishD" resply. Please change the elastic.yml file in config to match it or change this file accordingly(for now). This will be picked from the properties file in future.
 
 ### Apache Spark
+- Download the spark from the following page http://spark.apache.org/downloads.html. For convenience you can download prebuilt with hadoop2.6 binary
+- Extract the tar file
+-  Go to spark home
+-  Run the following command
+  > bin/spark-submit --class com.useractivity.spark.streaming.StreamProcessor --master local[4] <location to activitystreamprocessor-1.0-SNAPSHOT-jar-with-dependencies.jar>
+
 
 
 
