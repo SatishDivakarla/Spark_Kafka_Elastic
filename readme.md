@@ -37,6 +37,15 @@ This project contains a simple user activity monitor on a single webpage. For ev
 -  Run the following command
   > bin/spark-submit --class com.useractivity.spark.streaming.StreamProcessor --master local[4] <location to activitystreamprocessor-1.0-SNAPSHOT-jar-with-dependencies.jar>
 
+### Other dependencies
+- All other dependencies like Spring, Jackson are downloaded and used through maven dependency management.
+
+## Execution
+- Once the above stack is up and running, the following war file UserActivityMonitor:war should be deployed to webserver.
+- Open the following page in browser and start some mouse move acitivites <br/> http://localhost:8080/UserActivityMonitor/welcome 
+- The live active quadrant can be viewed at the following page, http://localhost:8080/UserActivityMonitor/viewactivity/
+
+
 
 
 
