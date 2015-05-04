@@ -25,6 +25,10 @@ public class StreamProcessor implements Serializable {
 
     private static com.useractivity.spark.streaming.StreamProcessor instance = null;
 
+    /**
+     * Singleton
+     * @return Stream processor instance
+     */
     public static com.useractivity.spark.streaming.StreamProcessor getInstance(){
         if(instance == null){
             instance = new com.useractivity.spark.streaming.StreamProcessor();
@@ -32,7 +36,11 @@ public class StreamProcessor implements Serializable {
         return instance;
     }
 
-
+    /**
+     * This method reads from the kafka topic, Gets the Quadrant, the coordinate belongs to
+     * and indexes the record to elastic search.
+     * @param topicName
+     */
     public void processStream(String topicName){
         SparkConf conf = new SparkConf().setAppName("UserActivityStreaming");
         JavaStreamingContext javaStreamingContext = new JavaStreamingContext(conf, Durations.seconds(5));
@@ -48,7 +56,7 @@ public class StreamProcessor implements Serializable {
             }
         });
 
-        JavaDStream<Quadrant> quadrants = lines.map(new QuadrantCreator.LinesToQuadrant());
+        JavaDStream<Quadrant> quadrants = lines.map(new QuadrantCreator.CoordinatesToQuadrant());
 
         quadrants.foreachRDD(new Function<JavaRDD<Quadrant>, Void>() {
             @Override

@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  */
 public class QuadrantCreator {
 
-    static class LinesToQuadrant implements Function<String, Quadrant> {
+    static class CoordinatesToQuadrant implements Function<String, Quadrant> {
         private static final Pattern COMMA = Pattern.compile(",");
 
         @Override
